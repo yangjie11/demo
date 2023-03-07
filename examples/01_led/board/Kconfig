@@ -47,7 +47,7 @@ menu "Onboard Peripheral Drivers"
                 bool "Enable lcd fill test"
                 default y
         endif
-        
+
     menuconfig BSP_USING_TOUCH
         bool "Use LCD TOUCH (Default Res)"
         default n
@@ -500,7 +500,7 @@ menu "On-chip Peripheral Drivers"
     config BSP_USING_FMC
         bool
         default n
- source "libraries/HAL_Drivers/Kconfig"
+ source "../../libraries/HAL_Drivers/Kconfig"
 
 endmenu
 
