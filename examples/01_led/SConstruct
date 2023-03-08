@@ -2,10 +2,13 @@ import os
 import sys
 import rtconfig
 
-if os.getenv('RTT_ROOT'):
-    RTT_ROOT = os.getenv('RTT_ROOT')
+if os.path.exists('rt-thread'):
+    RTT_ROOT = os.path.normpath(os.getcwd() + '/rt-thread')
+    print(RTT_ROOT)
+    print('_------')
 else:
-    RTT_ROOT = os.path.normpath(os.getcwd() + '/../../rt-thread')
+    RTT_ROOT = os.path.normpath(os.getcwd() + '../../../rt-thread')
+    print(RTT_ROOT)
 
 sys.path = sys.path + [os.path.join(RTT_ROOT, 'tools')]
 try:
@@ -35,14 +38,21 @@ Export('RTT_ROOT')
 Export('rtconfig')
 
 SDK_ROOT = os.path.abspath('./')
+print(SDK_ROOT)
+print('kkkk')
 
 if os.path.exists(SDK_ROOT + '/libraries'):
     libraries_path_prefix = SDK_ROOT + '/libraries'
+    print(SDK_ROOT)
+    print('kkkk11')
+
 else:
-    libraries_path_prefix = os.path.dirname(SDK_ROOT) + '/../libraries'
+    libraries_path_prefix = os.path.dirname(SDK_ROOT) + '../../libraries'
 
 SDK_LIB = libraries_path_prefix
 Export('SDK_LIB')
+
+
 
 # prepare building environment
 objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=False)
@@ -50,11 +60,12 @@ objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=False)
 stm32_library = 'STM32F4xx_HAL'
 rtconfig.BSP_LIBRARY_TYPE = stm32_library
 
-# include libraries
-objs.extend(SConscript(os.path.join(libraries_path_prefix, stm32_library, 'SConscript')))
+if not os.path.exists('libraries'):
+    # include libraries
+    objs.extend(SConscript(os.path.join(libraries_path_prefix, stm32_library, 'SConscript')))
 
-# include drivers
-objs.extend(SConscript(os.path.join(libraries_path_prefix, 'HAL_Drivers', 'SConscript')))
+    # include drivers
+    objs.extend(SConscript(os.path.join(libraries_path_prefix, 'HAL_Drivers', 'SConscript')))
 
 # make a building
 DoBuilding(TARGET, objs)

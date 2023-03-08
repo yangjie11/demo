@@ -103,9 +103,6 @@
 /* Utilities */
 
 
-/* RT-Thread Utestcases */
-
-
 /* RT-Thread online packages */
 
 /* IoT - internet of things */
@@ -163,11 +160,19 @@
 
 /* peripheral libraries and drivers */
 
+/* sensors drivers */
+
+
+/* touch drivers */
+
 
 /* Kendryte SDK */
 
 
 /* AI packages */
+
+
+/* Signal Processing and Control Algorithm Packages */
 
 
 /* miscellaneous packages */
@@ -181,13 +186,41 @@
 /* entertainment: terminal games and other interesting software packages */
 
 
+/* Arduino libraries */
+
+
+/* Projects */
+
+
+/* Sensors */
+
+
+/* Display */
+
+
+/* Timing */
+
+
+/* Data Processing */
+
+
+/* Data Storage */
+
+/* Communication */
+
+
+/* Device Control */
+
+
+/* Other */
+
+
+/* Signal IO */
+
+
+/* Uncategorized */
+
 /* Privated Packages of RealThread */
-
-
-/* Network Utilities */
-
-
-/* RT-Thread Smart */
 
 #define SOC_FAMILY_STM32
 #define SOC_SERIES_STM32F4
@@ -200,9 +233,6 @@
 /* Onboard Peripheral Drivers */
 
 #define BSP_USING_USB_TO_USART
-
-/* Enable File System */
-
 
 /* On-chip Peripheral Drivers */
 
